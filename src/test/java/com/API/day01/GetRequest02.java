@@ -30,7 +30,6 @@ public class GetRequest02 {
         // bu case de benden body doğrulaması istenmediği için şimdilik beklenen sonuç oluşturmuyoruz
 
         //3-  request gönder
-
         Response response = given().
                 accept(ContentType.JSON).
                 when().get(uri);
@@ -74,7 +73,7 @@ public class GetRequest02 {
         String uri="https://restful-booker.herokuapp.com/booking/100111";
 
         Response response=given().
-                accept(ContentType.JSON).
+                accept("application/json").
                 get(uri);
 
         response.prettyPrint();

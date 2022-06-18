@@ -1,4 +1,4 @@
-package com.techproed.day04;
+package com.API.day01;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -25,17 +25,14 @@ Oldugunu test edin
 
 
         // 1- api testi yaparken ilk olarak url(endpoint) belirlenmeli
-
         String url = "https://restful-booker.herokuapp.com/booking/3";
 
         //2- beklenen sonuç(expected result) oluşturulur.
-
         // bu case de benden body doğrulaması istenmediği için şimdilik beklenen sonuç oluşturmuyoruz
 
         //3-  request gönder
-
         Response response = given().
-                accept(ContentType.JSON).  // accept("application/json") kullanılabilir.
+                accept("application/json").  // accept("application/json") kullanılabilir.
                         when().
                 get(url);
 
