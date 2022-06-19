@@ -38,22 +38,26 @@ public class GetRequest03 {
 
         response.prettyPrint();
 
+        // 1. Yöntem ================== Matcher(s) Class ile Dogrulama=====================
 
-        // erste Lösung
-
-     // response.then().
-     //         assertThat().
-     //         statusCode(200).
-     //         contentType(ContentType.JSON).
-     //         body("firstname", equalTo("Jim")).
-     //         body("lastname", equalTo("Ericsson")).
-     //         body("totalprice", equalTo(668)).
-     //         body("depositpaid", equalTo(false)).
-     //         body("bookingdates.checkin", equalTo("2017-07-03"))
-     //         .body("bookingdates.checkout", equalTo("2022-02-14"));
+        // Burada sadece Assert ile API dogrulmasini yapamayiz,
+        // cünkü  responde body nin icindeki bilgileri alabilmemiz icin Matcher(s) Class ini kullanmamiz gerek
+        // responde body nin icindeki bilgileri json path leri yardimi ile aliriz, örn: bookingdates.checkout
 
 
-        // zweite Lösung
+        // response.then().
+        //         assertThat().
+        //         statusCode(200).
+        //         contentType(ContentType.JSON).
+        //         body("firstname", equalTo("Jim")).
+        //         body("lastname", equalTo("Ericsson")).
+        //         body("totalprice", equalTo(668)).
+        //         body("depositpaid", equalTo(false)).
+        //         body("bookingdates.checkin", equalTo("2017-07-03"))
+        //         .body("bookingdates.checkout", equalTo("2022-02-14"));
+
+
+        // 2. Yöntem ================== Matcher(s) Class ile Dogrulama=====================
 
         response.then().
                 assertThat().
@@ -61,7 +65,7 @@ public class GetRequest03 {
                 contentType(ContentType.JSON).
                 body("firstname", equalTo("Jim"),
                         "lastname", equalTo("Ericsson"),
-                        "totalprice", equalTo(668), "depositpaid",equalTo(false),
+                        "totalprice", equalTo(668), "depositpaid", equalTo(false),
                         "bookingdates.checkin", equalTo("2017-07-03"),
                         "bookingdates.checkout", equalTo("2022-02-14"));
 

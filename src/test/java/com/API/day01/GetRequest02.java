@@ -2,10 +2,11 @@ package com.API.day01;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class GetRequest02 {
 
@@ -78,10 +79,10 @@ public class GetRequest02 {
 
         response.prettyPrint();
 
-
+        //========= Bildigimiz Assert yöntemi ile dogrulama=============
         response.then().assertThat().statusCode(404);
-        Assert.assertTrue(response.asString().contains("Not Found"));
-        Assert.assertFalse(response.asString().contains("API"));
+        assertTrue(response.asString().contains("Not Found"));
+        assertFalse(response.asString().contains("API"));
 
         // asString methodu ile json formatinda gelen response u Stringe cevirdik
 

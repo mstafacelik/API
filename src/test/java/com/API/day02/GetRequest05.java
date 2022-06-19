@@ -34,7 +34,10 @@ public class GetRequest05 {
 
         response.prettyPrint();
 
-        response.then().assertThat().statusCode(200).
+        response.
+                then().
+                assertThat().
+                statusCode(200).
                 contentType(ContentType.JSON).
                 body("data.id", hasSize(24),
                         "data.employee_name", hasItem("Ashton Cox"),

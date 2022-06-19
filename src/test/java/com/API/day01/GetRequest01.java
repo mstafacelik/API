@@ -25,16 +25,17 @@ Oldugunu test edin
 
 
         // 1- api testi yaparken ilk olarak url(endpoint) belirlenmeli
-        String url = "https://restful-booker.herokuapp.com/booking/3";
+        String uri = "https://restful-booker.herokuapp.com/booking/3";
 
         //2- beklenen sonuç(expected result) oluşturulur.
         // bu case de benden body doğrulaması istenmediği için şimdilik beklenen sonuç oluşturmuyoruz
 
         //3-  request gönder
+        // Eger asagidaki yazimda syntex hatasi aliyorsak Response`u restassured kutuphanesinden almamisiz demektir!
         Response response = given().
-                accept("application/json").  // accept("application/json") kullanılabilir.
+                accept("application/json").  // Eger API sadece json tipini destekliyorsa bunu yazmaya gerek yok.
                         when().
-                get(url);
+                get(uri);
 
          response.prettyPrint();
 
