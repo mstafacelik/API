@@ -57,7 +57,7 @@ public class GetRequest03 {
         //         .body("bookingdates.checkout", equalTo("2022-02-14"));
 
 
-        // 2. Yöntem ================== Matcher(s) Class ile Dogrulama=====================
+        // 2. Yöntem ================== Matcher(s) Class ile Dogrulama Tek Body Icinde =====================
 
         response.then().
                 assertThat().

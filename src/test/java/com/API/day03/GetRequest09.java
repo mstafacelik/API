@@ -8,6 +8,10 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
@@ -63,9 +67,9 @@ Toplam 24 tane çalışan olduğunu,
         // ================ JsonPath ile Dogrulama ==========================
 
         // StatusCode ile contentType response body de yer almaz,
-        // Matcher(s) Class ile ya da Junit Assert ile zaten dogrulama yapmak zorundayiz.
-        assertEquals(200, response.getStatusCode());
-        // Alternatif yazim-->> assertTrue(response.getStatusCode()==200);
+        // Matcher(s) Class ile ya da Junit Assert ile  dogrulama yapmak zorundayiz.
+        assertEquals(200, response.getStatusCode()); // Alternatif yazim-->> assertTrue(response.getStatusCode()==200);
+        response.then().assertThat().contentType("application/JSON").statusCode(200);
 
 
         int actualSize = jsonPath.getList("data.id").size();
@@ -73,6 +77,17 @@ Toplam 24 tane çalışan olduğunu,
         assertEquals("Airi Satou", jsonPath.getString("data[4].employee_name"));
         assertEquals(372000, jsonPath.getInt("data[5].employee_salary")); // int oldugu icin getInt
 
+        assertTrue(jsonPath.getList("data.employee_name").contains("Rhona Davidson"));
+
+
+        List<Integer> arananyaslar = new ArrayList<>();
+        arananyaslar.add(21);
+        arananyaslar.add(23);
+        arananyaslar.add(61);
+
+        //Alternatif yazim ArrayList icin--->> List<Integer> arananyaslar= Arrays.asList(21,23,61);
+
+        assertTrue((jsonPath.getList("data.employee_age")).containsAll(arananyaslar));
 
     }
 

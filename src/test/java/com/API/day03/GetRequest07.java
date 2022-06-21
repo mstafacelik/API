@@ -73,7 +73,7 @@ public class GetRequest07 extends HerOkuAppTestBase {
 /*
         - Matcher(s) Class ile JsonPath i ayni anda da kullanilabilir dogrulama icin.
         - Eger statusCode veya contentType dogrulamamiz gerekiyorsa Matcher(s) Class ile
-        - ya da Junit Assert ile zaten dogrulama yapmak zorundayiz.
+        - ya da Junit Assert ile dogrulama yapmak zorundayiz.
         - Cunku jsonPath ile sadece response body'ye ait bilgiler gelir.
         - StatusCode ile contentType response body de yer almaz.
 
@@ -81,7 +81,7 @@ public class GetRequest07 extends HerOkuAppTestBase {
 
 
         // response dan gelen body'yi jsonPath nesnesine assign ederiz
-        // jsonPath in icerisinde su an sadece response body bilgileri var
+        // jsonPath in icerisinde su an sadece response body e ait bilgiler var
 
         JsonPath jsonPath = response.jsonPath();
 
