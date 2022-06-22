@@ -44,7 +44,7 @@ Dönen response un
 
         JsonPath jsonPath = response.jsonPath();
 
-        //Groovy dili javanin alt dilidir. Bu dil yardimi ile loop kullanmadan
+        //Groovy dili javanin alt dilidir. Bu dil yardimi ile for loop kullanmadan
         // gelen responsedaki değerler bir şarta bağli olarak listeye yazdirilabilir
 
 

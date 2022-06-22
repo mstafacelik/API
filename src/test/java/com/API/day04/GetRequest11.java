@@ -33,7 +33,7 @@ header değerlerinden
    1-) url oluştur
    2-) --expected data
    3-) request gönder
-   4-)  -- actual data
+   4-) --actual data
    5-) assertion
      */
 
@@ -75,7 +75,7 @@ header değerlerinden
                         "title", equalTo(expectedData.get("title")),
                         "completed", equalTo(expectedData.get("completed")));
 
-        // NOT : Header daki actual data isimlerinin yazimi case sensitiv degil. Ama response body deki datalarinki case sensitiv
+        // NOT : Header daki actual data isimlerinin yazimi case sensitiv degil. Ama response body deki datalarinki case sensitiv !
         // headers ve response body icinde ilk olarak hep actual data,
         // ikinci olarak ise bize data olarak verilen expected data yazilir
 
@@ -89,7 +89,7 @@ header değerlerinden
         // asagidaki dogrulamayi response ile yapiyoruz.
         assertEquals(expectedData.get("StatusCode"), response.getStatusCode());
         assertEquals(expectedData.get("Via"), response.getHeader("viA"));
-        assertEquals(expectedData.get("Server"), response.getHeader("SERVER"));
+        assertEquals(expectedData.get("Server"), response.getHeader("SeRVeR"));
 
         // Asagida response body'ye ait bilgiler yer aldigi icin dogrulamayi jsonPath ile yapiyoruz
         assertEquals(expectedData.get("userID"), jsonPath.getInt("userId"));

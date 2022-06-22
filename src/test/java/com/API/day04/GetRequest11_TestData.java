@@ -21,11 +21,11 @@ public class GetRequest11_TestData extends JsonPlaceHolderTestBase {
         spec01.pathParams("parametre1", "todos",
                 "parametre2", "2");
 
-        JsonPlaceHolderTestData jsonPlaceHolderTestData=new JsonPlaceHolderTestData();
+        JsonPlaceHolderTestData jsonPlaceHolderTestData = new JsonPlaceHolderTestData();
 
-        HashMap<String,Object> expectedData= (HashMap<String, Object>) jsonPlaceHolderTestData.setUpTestData();
+        HashMap<String, Object> expectedDataMap = (HashMap<String, Object>) jsonPlaceHolderTestData.setUpTestData();
 
-        System.out.println(expectedData);
+        System.out.println("expectedDataMap = " + expectedDataMap);
 
         Response response = given().
                 accept("application/JSON").
@@ -41,17 +41,16 @@ public class GetRequest11_TestData extends JsonPlaceHolderTestBase {
         response.
                 then().
                 assertThat().
-                statusCode((int) (expectedData.get("StatusCode"))).
-                headers("viA", equalTo(expectedData.get("Via")), // dikkat-->header degil headerS !
-                        "sErVeR", equalTo(expectedData.get("Server"))).
-                body("userId", equalTo(expectedData.get("userID")),
-                        "title", equalTo(expectedData.get("title")),
-                        "completed", equalTo(expectedData.get("completed")));
+                statusCode((int) (expectedDataMap.get("StatusCode"))).
+                headers("viA", equalTo(expectedDataMap.get("Via")), // dikkat-->header degil headerS !
+                        "sErVeR", equalTo(expectedDataMap.get("Server"))).
+                body("userId", equalTo(expectedDataMap.get("userID")),
+                        "title", equalTo(expectedDataMap.get("title")),
+                        "completed", equalTo(expectedDataMap.get("completed")));
 
         // NOT : Header daki actual data isimlerinin yazimi case sensitiv degil. Ama response body deki datalarinki case sensitiv
         // headers ve response body icinde ilk olarak hep actual data,
         // ikinci olarak ise bize data olarak verilen expected data yazilir
-
 
 
         // 2.Yöntem ========== Json Path ile Dogrulama =============
@@ -60,24 +59,37 @@ public class GetRequest11_TestData extends JsonPlaceHolderTestBase {
 
         // StatusCode, ContentType ve Header'a ait bilgiler response body'de yer almadigi icin
         // asagidaki dogrulamayi response ile yapiyoruz.
-        assertEquals(expectedData.get("StatusCode"), response.getStatusCode());
-        assertEquals(expectedData.get("Via"), response.getHeader("viA"));
-        assertEquals(expectedData.get("Server"), response.getHeader("SERVER"));
+        assertEquals(expectedDataMap.get("StatusCode"), response.getStatusCode());
+        assertEquals(expectedDataMap.get("Via"), response.getHeader("viA"));
+        assertEquals(expectedDataMap.get("Server"), response.getHeader("sErVeR"));
 
         // Asagida response body'ye ait bilgiler yer aldigi icin dogrulamayi jsonPath ile yapiyoruz
-        assertEquals(expectedData.get("userID"), jsonPath.getInt("userId"));
-        assertEquals(expectedData.get("title"), jsonPath.getString("title"));
-        assertEquals(expectedData.get("completed"), jsonPath.getBoolean("completed"));
+        assertEquals(expectedDataMap.get("userID"), jsonPath.getInt("userId"));
+        assertEquals(expectedDataMap.get("title"), jsonPath.getString("title"));
+        assertEquals(expectedDataMap.get("completed"), jsonPath.getBoolean("completed"));
 
 
-
-        // 3. Yöntem =========== DE-Serialization ==================
-
-        // --> Object Mapper
-        // --> Pojo Class ile Map
+        // 3. Yöntem =========== DE-Serialization ================== ( Object Mapper,  Pojo Class ile Map )
 
 
+        HashMap<String, Object> actualDataMap = response.as(HashMap.class);
+        System.out.println("actualDataMap = " + actualDataMap);
+        // response dan gelen datayi map gibi(as) alip, actual dataya atadik
 
+
+        // StatusCode, ContentType ve Header'a ait bilgiler response body'de yer almadigi icin
+        // HashMap icinde bu bilgiler yer almaz. Bunlarin dogrulamasi da response ile yapiyoruz tipki yukardaki gibi
+
+        assertEquals(expectedDataMap.get("StatusCode"), response.getStatusCode());
+        assertEquals(expectedDataMap.get("Via"), response.getHeader("viA"));
+        assertEquals(expectedDataMap.get("Server"), response.getHeader("sErVeR"));
+
+
+        // DE-Serialization'da da HashMap in icine gelen kisim sadece body kismi json path deki gibi.
+
+        assertEquals(expectedDataMap.get("userID"), actualDataMap.get("userId"));
+        assertEquals(expectedDataMap.get("title"), actualDataMap.get("title"));
+        assertEquals(expectedDataMap.get("completed"), actualDataMap.get("completed"));
 
 
     }
