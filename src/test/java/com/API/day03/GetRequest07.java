@@ -94,6 +94,7 @@ public class GetRequest07 extends HerOkuAppTestBase {
                 contentType("application/JSON");
 
         // Eger statusCode ve contentType'i Matcher(s) ile dogrulama yapmak istemezsek su sekilde yapariz
+        // JsonPath te child lara nokta koyup ulasabiliyoruz. ÖRN : data[2].employee_name
 
         assertEquals(200,response.getStatusCode());
         assertEquals("application/JSON", response.getContentType());
