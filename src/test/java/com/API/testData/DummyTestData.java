@@ -1,5 +1,7 @@
 package com.API.testData;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +55,64 @@ public class DummyTestData {
 
 
         return expectedData;
+    }
+
+
+
+    /*
+    http://dummy.restapiexample.com/api/v1/employees url ine bir istek gönderildiğinde
+Status kodun 200 olduğunu,
+En yüksek maaşın 725000 olduğunu,
+En küçük yaşın 19 olduğunu,
+İkinci en yüksek maaşın 675000
+olduğunu test edin.
+     */
+
+
+    public HashMap<String, Object> setUpTestData02() {
+
+        HashMap<String, Object> expectedData = new HashMap<>();
+
+        expectedData.put("statusCode", 200);
+        expectedData.put("enYuksekMaas", 725000);
+        expectedData.put("ikinciEnYuksekMaas", 675000);
+        expectedData.put("enKucukYas", 19);
+
+        return expectedData;
+
+    }
+
+    public HashMap<String, String> setUpRequestBody() {
+
+        HashMap<String, String> requestBody = new HashMap<>();
+        requestBody.put("name", "mustingo");
+        requestBody.put("salary", "5000");
+        requestBody.put("age", "99");
+
+        return requestBody;
+
+
+    }
+
+    public HashMap<String, Object> setUpExpectedTestData() {
+
+        //  Map<String, Object> dataMapInner = new HashMap<>();
+
+        //  dataMapInner.put("name", "mustingo");
+        //  dataMapInner.put("salary", "5000");
+        //  dataMapInner.put("age", "99");
+
+        HashMap<String, Object> expectedData = new HashMap<>();
+
+        expectedData.put("StatusCode", 200);
+        expectedData.put("StatuS", "success");
+        // expectedData.put("data", dataMapInner);
+
+        expectedData.put("MessagE", "Successfully! Record has been added.");
+
+        return expectedData;
+
+
     }
 
 
