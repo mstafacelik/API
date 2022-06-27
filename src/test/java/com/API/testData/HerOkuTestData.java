@@ -1,5 +1,8 @@
 package com.API.testData;
 
+import com.google.gson.JsonObject;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 public class HerOkuTestData {
@@ -39,4 +42,36 @@ public class HerOkuTestData {
 
 
     }
+
+
+    public JSONObject setUpTestAndRequestData() {
+
+
+
+        // JSONObject class ini kullanarak expected data lari olusturuyoruz, Map ile olusturmak yerine.
+        // Bu sayede Casting yapmaya gerek kalmiyor Assertion larda.
+
+        JSONObject bookingdates = new JSONObject(); //icteki JSONObject olusturuldu
+
+        bookingdates.put("checkin", "2022-10-10");
+        bookingdates.put("checkout", "2022-10-15");
+
+
+        // request body ve expected data ayni oldugu icin ayri ayri olusturmuyoruz
+        // bir tanesini olusturup ikisi icin de kullanacagiz
+
+        JSONObject requestAndExpectedData = new JSONObject(); //distaki JSONObject olusturuldu
+
+        requestAndExpectedData.put("firstname", "mustafa");
+        requestAndExpectedData.put("Lastname", "celik");
+        requestAndExpectedData.put("totalprice", 5000);
+        requestAndExpectedData.put("depositpaid", true);
+        requestAndExpectedData.put("bookingdates", bookingdates);
+
+        return requestAndExpectedData;
+
+
+    }
+
+
 }
