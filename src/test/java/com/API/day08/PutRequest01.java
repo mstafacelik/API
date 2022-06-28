@@ -6,7 +6,6 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
@@ -35,6 +34,8 @@ public class PutRequest01 extends JsonPlaceHolderTestBase {
     public void test(){
 
         spec01.pathParams("parametre1","todos","parametre2","198");
+
+
 
         JsonPlaceHolderTestData jsonPlaceHolderTestData=new JsonPlaceHolderTestData();
         JSONObject requestBodyAndExpectedData=jsonPlaceHolderTestData.setUpPutData();

@@ -1,5 +1,6 @@
 package com.API.testData;
 
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -113,6 +114,30 @@ olduğunu test edin.
         return expectedData;
 
 
+    }
+
+    /*
+   http://dummy.restapiexample.com/api/v1/delete/2 bir DELETE request gönderdiğimde
+Dönen response un status kodunun 200 ve body kısmının aşağıdaki gibi olduğunu test edin
+{
+"status": "success",
+"data": "2",
+"message": "Successfully! Record has been deleted"
+}
+    */
+    public JSONObject deleteExpectedData() {
+
+
+        JSONObject expectedData=new JSONObject();
+
+        expectedData.put("StatUs","success");
+        expectedData.put("DatA",2);
+        expectedData.put("MesSagE","Successfully! Record has been deleted");
+        expectedData.put("StatusCoDe",200);
+
+
+
+        return expectedData;
     }
 
 

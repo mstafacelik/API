@@ -33,6 +33,10 @@ gönderildiğinde,Status kodun 200 olduğunu ve dönen response body nin ,
 olduğunu test edin
      */
 
+    //POST  :Henüz data yoktur. Yeni bir data olusturulur.
+    //PUT   :Var olan bir datada degisiklik yapilir.Kismi bir degisilik yapilsa bile diger degisiklik yapilmyan datalar null degerini alir
+    //PATCH :Var olan bir datada degisiklik yapilir ve sadece degisliklik yapilan data bundan etkilenir
+
     @Test
     public void test() {
 

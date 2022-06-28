@@ -104,6 +104,12 @@ header değerlerinden
         // --> Pojo Class ile Map
 
 
+        // NOT : jsonPath ve De-Serialization ile assert yaparken once expected data sonra actual data yazilir
+        //       Matchers ile assert yaparken tam tersi, yani once actual data sonra expected data yazilir
+
+
+
+
 
 
 

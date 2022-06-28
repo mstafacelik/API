@@ -6,7 +6,6 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class PostRequest02 extends HerOkuAppTestBase {
+public class PostRequest02_JSONObject extends HerOkuAppTestBase {
 
      /*
     https://restful-booker.herokuapp.com/booking
@@ -50,6 +49,10 @@ olduğunu test edin
 
         // 2-request Body ve expected data ayni oldugundan tek bir JSONObject kullanilmasi yeterli
         HerOkuTestData herOkuTestData = new HerOkuTestData();
+
+        // NOT: JSONObject ile expected datalari olusturuyoruz. Onceki classlarda expected datalari
+        //      HashMap e atiyorduk. Bu durumda assert ederken casting yapmak zorundayiz.
+        //      JSONObject'te expected datanin assert'i icin casting islemine gerek kalmiyor
         JSONObject requestAndExpectedData = herOkuTestData.setUpTestAndRequestData();
 
         System.out.println("requestAndExpectedData = " + requestAndExpectedData);
@@ -68,6 +71,10 @@ olduğunu test edin
         // 4- actual data olustur ve karsilastir
 
         // ---> DE-Serialization ile
+
+        // NOT: Response'u bir JSONObject e assign edemeyiz, bir Map'e assign etmemiz gerek.
+        // Oysa expectedData lari bir JSONObject e assign  edebiliriz.
+
 
         HashMap<String, Object> actualDataMap = response.as(HashMap.class);
         System.out.println("actualDataMap = " + actualDataMap);
