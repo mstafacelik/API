@@ -19,6 +19,7 @@ public class TodosPojo {
     private boolean completed;
 
     // 2- bu degerlere ulasabilmek icin public getter ve setter methodlar olusturulur
+    //    actualData lara buradaki getter() lar üzerinden ulasiriz
 
 
     public int getUserId() {

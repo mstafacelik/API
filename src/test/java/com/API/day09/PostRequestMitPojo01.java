@@ -32,17 +32,17 @@ public class PostRequestMitPojo01 extends JsonPlaceHolderTestBase {
     public void test() {
 
 
-        //uri
+        // 1- uri
         spec01.pathParam("parametre1", "todos");
 
-        // request body expected data ayni
+        // 2- request body expected data ayni
 
+        // Burda parametreli constructor olusturuyoruz,  parametrelerle direkt ilk deger atamasi yapiyoruz
         TodosPojo requestAndExpectedData = new TodosPojo(21, 201, "Tidy your room", false);
-
-
         System.out.println("requestAndExpectedData = " + requestAndExpectedData);
 
-        // request gonder
+
+        // 3- request gonder
 
         Response response = given().
                 contentType(ContentType.JSON).
@@ -55,7 +55,7 @@ public class PostRequestMitPojo01 extends JsonPlaceHolderTestBase {
         response.prettyPrint();
 
 
-        // actual data olustur ve dogrula
+        //4-  actual data olustur ve dogrula
 
 
         TodosPojo actualData = response.as(TodosPojo.class); // DE-Serialization
