@@ -11,7 +11,7 @@ API-Abfragen und Assertion wurden auf verschiedene Weise durchgeführt. Diese :
 -> JsonPath
 
 -> De-Serialization
-  - Gson
+  - Pojo
   - ObjectMapper
 
 
